@@ -1,26 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';//used for components to interact with redux
 import * as courseActions from '../../actions/courseAction';
 import {bindActionCreators} from 'redux';
+import propTypes from 'prop-types';
+import CourseList from './courseList';
 
+//this is a container component, hence taking logics to presentational component
 class Course extends Component {
     constructor(props, context) {
-        super(props, context)
-        this.state = {
-            course: { title: '' }
-        }
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-    
-    onTitleChange(event) {
-        const course = this.state.course;
-        course.title = event.target.value;
-        this.setState({ course: course })
-    }
-
-    onSubmit() {
-        this.props.actions.createCourse(this.state.course);
+        super(props, context);
+        
     }
 
     courseRow(course,index) {
@@ -28,15 +17,11 @@ class Course extends Component {
     }
 
     render() {
+        const {courses} = this.props;
         return (
             <div>
                 <h1>Courses</h1>
-                {this.props.courses.map(this.courseRow)}
-                <h2>Add Course</h2>
-                <input type="text" onChange={this.onTitleChange}
-                    value={this.state.course.title} />
-                <input type="submit" value="Save"
-                    onClick={this.onSubmit} />
+                <CourseList courses={courses}/>
             </div>
         )
     }
