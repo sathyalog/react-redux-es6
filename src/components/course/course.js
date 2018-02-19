@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react';
+import {connect} from 'react-redux';//used for components to interact with redux
+import * as courseActions from '../../actions/courseAction';
 
 class Course extends Component {
     constructor(props, context) {
@@ -17,7 +19,7 @@ class Course extends Component {
     }
 
     onSubmit() {
-        alert(`Saving ${this.state.course.title}` );
+        this.props.dispatch(courseActions.createCourse(this.state.course));
     }
 
     render() {
@@ -34,4 +36,14 @@ class Course extends Component {
     }
 }
 
-export default Course;
+function mapStateToProps(state,ownProps) {
+    return {
+        courses : state.courses // this state.courses is from redux store(reducers/index.js)
+    }
+}
+export default connect(mapStateToProps)(Course); //wrap Course page with connect. 
+//ES6 calling with two functions sidebyside. One function after other with return result
+
+//also you can write the same above connect like this
+//const connectedStateAndProps = connect(mapStateToProps,mapDispatchToProps);
+//export default connectedStateAndProps(Course);
