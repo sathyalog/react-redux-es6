@@ -22,10 +22,15 @@ class Course extends Component {
         this.props.dispatch(courseActions.createCourse(this.state.course));
     }
 
+    courseRow(course,index) {
+        return <div key={index}>{course.title}</div>
+    }
+
     render() {
         return (
             <div>
                 <h1>Courses</h1>
+                {this.props.courses.map(this.courseRow)}
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange}
                     value={this.state.course.title} />
