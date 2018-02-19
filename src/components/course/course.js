@@ -19,7 +19,7 @@ class Course extends Component {
     }
 
     onSubmit() {
-        this.props.dispatch(courseActions.createCourse(this.state.course));
+        this.props.createCourse(this.state.course);
     }
 
     courseRow(course,index) {
@@ -46,7 +46,14 @@ function mapStateToProps(state,ownProps) {
         courses : state.courses // this state.courses is from redux store(reducers/index.js)
     }
 }
-export default connect(mapStateToProps)(Course); //wrap Course page with connect. 
+
+// list of actions in a component
+function mapDispatchToProps(dispatch){
+    return {
+        createCourse: course => dispatch(courseActions.createCourse(course))
+    };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Course); //wrap Course page with connect. 
 //ES6 calling with two functions sidebyside. One function after other with return result
 
 //also you can write the same above connect like this
