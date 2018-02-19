@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import {connect} from 'react-redux';//used for components to interact with redux
 import * as courseActions from '../../actions/courseAction';
+import {bindActionCreators} from 'redux';
 
 class Course extends Component {
     constructor(props, context) {
@@ -19,7 +20,7 @@ class Course extends Component {
     }
 
     onSubmit() {
-        this.props.createCourse(this.state.course);
+        this.props.actions.createCourse(this.state.course);
     }
 
     courseRow(course,index) {
@@ -50,7 +51,10 @@ function mapStateToProps(state,ownProps) {
 // list of actions in a component
 function mapDispatchToProps(dispatch){
     return {
-        createCourse: course => dispatch(courseActions.createCourse(course))
+        //this is manual way of writing actions..
+        //createCourse: course => dispatch(courseActions.createCourse(course))
+        // lets write it automated using bindActionsCreators
+        actions: bindActionCreators(courseActions,dispatch)
     };
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Course); //wrap Course page with connect. 
