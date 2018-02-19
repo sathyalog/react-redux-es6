@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';//used for components to interact with redux
 import * as courseActions from '../../actions/courseAction';
 import {bindActionCreators} from 'redux';

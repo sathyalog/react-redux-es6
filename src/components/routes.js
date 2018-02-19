@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import About from './about/about';
 import Home from './home/home'
@@ -8,7 +8,7 @@ export default () => (
     <BrowserRouter>
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">Admin</a>
+                <a className="navbar-brand" href="">Admin</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
