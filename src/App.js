@@ -9,13 +9,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   render() {
     return (
-          <div className="container-fluid">
-              <div className="jumbotron">
-                  <h1>Courses Administration</h1>
-                  <p>Created using React, Redux and React Router in ES6</p>
-              </div>
-              <Routes/>
-          </div>
+      <Routes />
     );
   }
 }
