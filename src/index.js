@@ -5,10 +5,12 @@ import App from './App';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import {loadCourses} from './actions/courseAction';
+import {loadAuthors} from './actions/authorActions';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
 store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
 
 ReactDOM.render(
     <Provider store={store}>
