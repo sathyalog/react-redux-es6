@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import About from './about/about';
 import Home from './home/home'
 import Course from './course/course';
+import ManageCoursePage from './course/manageCoursePage';
 
 export default () => (
     <BrowserRouter>
@@ -32,6 +33,8 @@ export default () => (
             <Route path="/home" exact component={Home} />
             <Route path="/about" exact component={About} />
             <Route path="/course" exact component={Course} />
+            <Route path="/editcourse" exact component={ManageCoursePage} />
+            <Route path="/course/:id" exact component={ManageCoursePage} />
         </Switch>
         </div>
         
