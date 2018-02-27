@@ -4,6 +4,7 @@ import About from './about/about';
 import Home from './home/home'
 import Course from './course/course';
 import ManageCoursePage from './course/manageCoursePage';
+import AddCoursePage from './course/addCoursePage';
 
 export default () => (
     <BrowserRouter>
@@ -34,6 +35,7 @@ export default () => (
             <Route path="/about" exact component={About} />
             <Route path="/course" exact component={Course} />
             <Route path="/editcourse" exact component={ManageCoursePage} />
+            <Route path="/addcourse" exact component={AddCoursePage} />
             <Route path="/course/:id" exact component={ManageCoursePage} />
         </Switch>
         </div>

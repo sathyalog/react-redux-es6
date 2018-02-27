@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseAction';
 import CourseForm from './courseForm';
 
-class ManagerCoursePage extends Component {
+class AddCoursePage extends Component {
     constructor(props,context){
         super(props,context);
 
@@ -30,7 +30,7 @@ class ManagerCoursePage extends Component {
     render(){
         return(
             <div>
-            <h1>Manage Course</h1>
+            <h1>Add Course</h1>
             <CourseForm 
                 course={this.state.course}
                 onChange = {this.updateCourseState}
@@ -64,4 +64,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProgs, mapDispatchToProps)(ManagerCoursePage)
+export default connect(mapStateToProgs, mapDispatchToProps)(AddCoursePage)

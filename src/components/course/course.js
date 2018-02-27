@@ -4,16 +4,29 @@ import * as courseActions from '../../actions/courseAction';
 import {bindActionCreators} from 'redux';
 import propTypes from 'prop-types';
 import CourseList from './courseList';
+import {Link} from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const history = createBrowserHistory();
+const location = {
+    pathname: '/addcourse',
+    state: { fromDashboard: true }
+  }
+  
 
 //this is a container component, hence taking logics to presentational component
 class Course extends Component {
     constructor(props, context) {
         super(props, context);
-        
+        this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
     }
 
     courseRow(course,index) {
         return <div key={index}>{course.title}</div>
+    }
+
+    redirectToAddCoursePage() {
+        this.props.history.push(location)
     }
 
     render() {
@@ -21,6 +34,11 @@ class Course extends Component {
         return (
             <div>
                 <h1>Courses</h1>
+                <input type="submit"
+                        value="Add Course"
+                        className="btn btn-primary"
+                        onClick={this.redirectToAddCoursePage}/>
+                        <br/><br/>
                 <CourseList courses={courses}/>
             </div>
         )
